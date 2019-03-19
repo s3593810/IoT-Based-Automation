@@ -1,6 +1,11 @@
-class Environment:
-    def__init_(self, temperature, humidity):
-    self.temperature=temperature
-    self.humidity=humidity
+from abc import ABC
+class Environment(ABC):
+    
+    @abstractmethod
+    def __Temperature__(self):
+        return self.__Temperature__()
 
-p1=Environment()
+    @abstractmethod
+    def __Humidity__(self):
+        return self.__Humidity__()
+
