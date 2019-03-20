@@ -11,8 +11,7 @@ class ReadJsonFile():
     @classmethod
     def __read(self):
         try:
-            data = Path("config.json").read_text()
-            variables = json.loads(data)
+            variables = json.loads(Path("config.json").read_text())
             __newlist = []
             for key, value in variables.items():
                 __newlist.append(value)
