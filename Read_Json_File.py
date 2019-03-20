@@ -10,12 +10,15 @@ class ReadJsonFile():
 
     @classmethod
     def __read(self):
-        data = Path("config.json").read_text()
-        variables = json.loads(data)
-        __newlist = []
-        for key, value in variables.items():
-            __newlist.append(value)
-        return __newlist
+        try:
+            data = Path("config.json").read_text()
+            variables = json.loads(data)
+            __newlist = []
+            for key, value in variables.items():
+                __newlist.append(value)
+            return __newlist
+        except FileNotFoundError:
+            print("The file is Not Found")
 
     @property
     def min_temperature(self):
@@ -32,3 +35,7 @@ class ReadJsonFile():
     @property
     def max_humidity(self):
         return self.__max_humidity
+
+
+read1 = ReadJsonFile()
+print(read1.max_humidity)
