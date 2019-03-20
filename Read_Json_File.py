@@ -36,6 +36,3 @@ class ReadJsonFile():
     def max_humidity(self):
         return self.__max_humidity
 
-
-read1 = ReadJsonFile()
-print(read1.max_humidity)
