@@ -35,4 +35,3 @@ class ReadJsonFile():
     @property
     def max_humidity(self):
         return self.__max_humidity
-
