@@ -15,3 +15,11 @@ class SensehatDB:
             curs.execute("INSERT INTO SENSEHAT_data values((?), (?), (?))", (datetime.now(), temp,hum,))
             conn.commit()
             conn.close()
+
+        def displayDB(self):
+            conn=lite.connect('sensehat.db')
+            curs=conn.cursor()
+            print ("\nEntire database contents:\n")
+            for row in curs.execute("SELECT * FROM SenseHat_data"):
+                print (row)
+            conn.close()
