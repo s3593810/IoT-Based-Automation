@@ -14,3 +14,6 @@ class SenseEnvironment:
         hum = sense.get_humidity()
         hum = sense.get_humidity()
         temp = temp - ((self.getCPUtemperature() - temp)/1)
+        if temp is not None:
+            temp = round(temp, 1)
+            hum = round(hum,1)
