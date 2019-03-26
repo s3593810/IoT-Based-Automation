@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# it is to send to users notification using pushbullet API
 import requests
 import json
 
