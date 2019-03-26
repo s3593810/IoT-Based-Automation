@@ -1,10 +1,10 @@
 # it is to send to users notification using pushbullet API
 import requests
 import json
+import config
 
 
 class Notification():
-    __ACCESS_TOKEN = "o.RMpzlDDXDe9yU61UUNHyn7QlUA4c3C2v"
 
     def send_notification_via_pushbullet(self, title, body):
         """ Sending notification via pushbullet.
@@ -15,7 +15,7 @@ class Notification():
         data_send = {"type": "note", "title": title, "body": body}
 
         resp = requests.post('https://api.pushbullet.com/v2/pushes', data=json.dumps(data_send),
-                             headers={'Authorization': 'Bearer ' + self.__ACCESS_TOKEN,
+                             headers={'Authorization': 'Bearer ' + config.ACCESS_TOKEN,
                                       'Content-Type': 'application/json'})
         if resp.status_code != 200:
             raise Exception('Something wrong')
