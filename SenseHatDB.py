@@ -45,7 +45,7 @@ class NotificationDB(DataBase):
             
     def insert (self,status,message):	
             point=self.__connection.cursor()
-            point.execute("INSERT INTO Notification_data values((?), (?), (?))", (datetime.now(), stataus,message,))
+            point.execute("INSERT INTO Notification_data values((?), (?), (?))", (datetime.now(), status,message))
             self.__connection.commit()
             self.__connection.close()
 
