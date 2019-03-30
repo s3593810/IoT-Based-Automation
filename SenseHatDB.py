@@ -41,7 +41,7 @@ class NotificationDB(DataBase):
     def createDatabase(self):
         with self.__connection: 
             point = self.__connection.cursor() 
-            point.execute("CREATE TABLE IF NOT EXISTS Notification_data(timestamp DATETIME, status VARCHAR(10), message VARCHAR(255))")
+            point.execute("CREATE TABLE IF NOT EXISTS Notification_data(timestamp DATETIME, status VARCHAR(10), message VARCHAR(600))")
             
     def insert (self,status,message):	
             point=self.__connection.cursor()
