@@ -1,0 +1,11 @@
+import csv
+
+class report:
+
+    def writeCSV(self):
+
+        self.m_dict = list(curs.fetchall())
+        with open("report.csv", "w", newline="") as csvfile:
+            w = csv.DictWriter(csvfile, self.m_dict[0].keys())
+            w.writerow(dict((fn,fn) for fn in self.m_dict[0].keys()))
+            w.writerows(self.m_dict)
