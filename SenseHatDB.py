@@ -74,7 +74,3 @@ class NotificationDB(DataBase):
            for row in point.execute("SELECT * FROM Notification_data"):
                print(row)
        connection.close()
-
-
-
-

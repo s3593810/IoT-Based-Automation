@@ -1,3 +1,3 @@
 # Assignment1_PIoT
 
-First Project 
+Creats SenseHat DataBase to insert sensed data from the sensor. 
