@@ -1,11 +1,16 @@
 import csv
+import sqlite3 as lite
+from glob import glob
+from os.path import expanduser
+from SenseHatDB import SensehatDB
 
-class report:
-
-    def writeCSV(self):
-
-        self.m_dict = list(curs.fetchall())
-        with open("report.csv", "w", newline="") as csvfile:
-            w = csv.DictWriter(csvfile, self.m_dict[0].keys())
-            w.writerow(dict((fn,fn) for fn in self.m_dict[0].keys()))
-            w.writerows(self.m_dict)
+class Report:
+    def Rep(self):
+        connection = lite.connect('sensehat.db')
+        with connection:
+            point = connection.cursor()
+            for row in point.execute("SELECT * FROM Notification_data"):
+                with open("Report.csv", "w", newline='') as csv_file:  # Python 3 version    
+                    csv_writer = csv.writer(csv_file)
+                    csv_writer.writerow([i[0] for i in point.description]) # write headers
+                    csv_writer.writerows(point)
