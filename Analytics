@@ -1,0 +1,28 @@
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+from dateutil import parser
+from matplotlib import style
+style.use('fivethirtyeight')
+import sqlite3 as lite
+from SenseHatDB import SensehatDB
+
+class Analytics:
+
+
+    def graph_data(self):
+        connection = lite.connect('sensehat.db')
+        c = connection.cursor()
+        c.execute('SELECT temp,hum FROM SenseHat_data')
+        data = c.fetchall()
+
+        dates=[]
+        temps = []
+        hums = []
+        
+        for row in data:
+            dates.append(parser.parse(row[0]))
+            temps.append(row[1])
+            hums.append(row[2])
+
+        plt.plot_date(dates,temps,hums,'-')
+        plt.show()
