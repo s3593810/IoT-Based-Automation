@@ -36,7 +36,7 @@ class MonitorAndNotify:
             tempDiffrence = temp-self.jsonVariables.max_temperature
             return "{} *C above maximum temperature".format(round(tempDiffrence, 1))
         else:
-            return "OK"
+            return None
 
     def humStatusMessage(self, hum):
         if(hum < self.jsonVariables.min_humidity):
@@ -48,7 +48,7 @@ class MonitorAndNotify:
                             self.jsonVariables.max_humidity)*100
             return "{} % above maximum humidity".format(round(humDiffrence, 1))
         else:
-            return "OK"
+            return None
 
     def startApp(self):
         temp = self.sense.senseTmp()
@@ -70,7 +70,6 @@ class MonitorAndNotify:
                 self.notifyUser.send_notification_via_pushbullet(
                     "Humidity Warning", "The humidity now is {}".format(hum))
             self.notifyDB.insert('OK')
-        print("Temperature : {} and Humidity : {}".format(temp, hum))
 
         self.db.displayDB()
 
