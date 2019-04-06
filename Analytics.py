@@ -53,15 +53,11 @@ class Analytics:
         fig = plot.get_figure()
         plt.tight_layout()
         fig.savefig('plot2.png')
-
-
-<<<<<<< HEAD
+        
 Ana = Analytics()
 
 Ana.matplotlib_graph()
 
 Ana.seaborn_graph()
-=======
 
->>>>>>> 4f6ce191b501302d64e3b1036ab67e83e853b652
 
