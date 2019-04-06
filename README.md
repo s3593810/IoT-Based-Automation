@@ -1,3 +1,4 @@
-# Assignment1_PIoT
+# Read from the JSON File
 
-First Project 
+In this file its all basically reades from the JSON file to python file. 
+
