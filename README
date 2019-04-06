@@ -1,3 +1,5 @@
+RMIT IOT Project 1:
+
 This project utilizes Raspberry Pi Model B
 Along with Sensehat to sense the environment arround it. 
 
@@ -8,3 +10,13 @@ assigned minimum and maximum values the sourrounding bluetooth and other devices
 
 At the end the collected data in the database get visualized to represent the changes in humidity and temperature using python visualization
 libraries. 
+
+
+Prerequisites
+Python3
+Raspberry Pi 3 Model B
+Sense hat
+
+Authors:
+Md Shakil Khan
+Ali Alahamari Abdullah
