@@ -1,3 +1,25 @@
+RMIT IOT Project 1:
+
+This project utilizes Raspberry Pi Model B
+Along with Sensehat to sense the environment arround it. 
+
+Coding used for this task is Python. 
+It tests humidity and temperature around every hour and logs to a database.
+There is a Json file to check the minimum and maximum temperature and humidity if the sensed temperature and humidity higher or lower than the 
+assigned minimum and maximum values the sourrounding bluetooth and other devices gets pushbullet notifications.
+
+At the end the collected data in the database get visualized to represent the changes in humidity and temperature using python visualization
+libraries. 
+
+
+Prerequisites
+Python3
+Raspberry Pi 3 Model B
+Sense hat
+
+Authors:
+Md Shakil Khan
+Ali Alahamari Abdullah
 
 Monitor and Notify file is most crucial for this project.
 
