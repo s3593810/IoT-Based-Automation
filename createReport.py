@@ -13,7 +13,8 @@ class CreateReport:
 
     def Rep(self):
         data = self.db.reportDB()
-        with open("Report.csv", "w", newline='') as csv_file:  # Python 3 version
+        filename = str(input("Please enter a neme for the CSV file : "))
+        with open("{}.csv".format(filename), "w", newline='') as csv_file:  # Python 3 version
             csv_writer = csv.writer(csv_file)
             csv_writer.writerow(["Date", "States", "Message"])  # Header
             for date, value in data.items():
