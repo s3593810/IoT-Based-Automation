@@ -1,0 +1,28 @@
+The sensehat data is saved in the data base. Python reads the data from the database formats it into date, 
+temperature and humidity and represents the changes in the temperature and humidity by days.
+The data is collected for 5 days at the same time of the day to ensure the surrounding impacts on the data
+ remains minimal. 
+The time for data collection was set to be 5 to 6 pm. 
+Python visualization libraries are explored to see which library fits the most representing numerical data.
+ A multi-criteria assessment was done to select the best libraries to represent the data. 
+Criteria’s considered on selection of the visualization libraries are: 
+•	Easiness of reading the data
+•	Type and Frequency of data
+•	Amount of data
+•	Number of attributes in the data etc.
+
+Based on the criteria’s it is found that the Matplotlib library and seaborn library will be the best of to visualize 
+the numeric type data with line and connected scatter plot.
+Matplotlib library contains subplotting mechanism which helps representing multiple plots on the same picture 
+thus visualizing humidity and temperature variations per day would be easier though this visualization technique.
+On the other hand seaborn is used to represent the temperature and humidity relation using connected scatter line
+plot which shows how the changes occur on each day in relation with humidity and temperature. Using matplotlib it is
+also helpful to save the graph using particular format as well. 
+
+1.	Matplotlib: Matplotlib is a 2-D plotting visualizing library. It emulates matlab like graphs and visualizations.
+ Matplot library has robust plotting capacity. It is really good at representing data directly from database or csv files. 
+It can represent different plots on the same figure using subplotting mechanism which is really helpful to present robust 
+information in one picture. However it is only possible to represent 6 subplots in a figure using this library.
+2.	Seaborn Library: Seaborn is a statistical data visualization library. Although it stands on top of matplot 
+library but it is good at representing statistical graphics in python. It is a dataset oriented api good at presenting 
+relationships between multiple variables.
