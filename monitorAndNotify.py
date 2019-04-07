@@ -17,6 +17,7 @@ class MonitorAndNotify:
     __notifyUser = Notification()
     __jsonVariables = ReadJsonFile()
 #  Checking the JSON file temperature range for current reading
+
     def __isTempInRange(self, temp):
         try:
             if self.__jsonVariables.min_temperature < temp < self.__jsonVariables.max_temperature:
@@ -38,12 +39,13 @@ class MonitorAndNotify:
             # saving any error in the app log file
             oo.logger.error("comparing the range of humidity has an error")
 #  o calculate the temperature difference between json values and current reading and return an appropriate message to be saved in the database
+
     def __tempStatusMessage(self, temp):
         try:
             if(temp < self.__jsonVariables.min_temperature):
                 tempDiffrence = self.__jsonVariables.min_temperature-temp
                 return "{} *C below minimum temperature".format(round(tempDiffrence, 1))
-            elif(temp > self.jsonVariables.max_temperature):
+            elif(temp > self.__jsonVariables.max_temperature):
                 tempDiffrence = temp-self.__jsonVariables.max_temperature
                 return "{} *C above maximum temperature".format(round(tempDiffrence, 1))
             else:
@@ -52,6 +54,7 @@ class MonitorAndNotify:
             # saving any error in the app log file
             oo.logger.error("There is an error in tempStatusMessage")
 # o calculate the humidity difference between json values and current reading and return an appropriate message to be saved in the database
+
     def __humStatusMessage(self, hum):
         try:
             if(hum < self.__jsonVariables.min_humidity):
@@ -85,7 +88,7 @@ class MonitorAndNotify:
             else:
                 self.__db.insert(temp, hum, "BAD", self.__tempStatusMessage(
                     temp), self.__humStatusMessage(hum))
-            
+
             # Check in the database if the user notify or not if it is not then it will be notified
             if self.__notifyDB.search() is not True:
                 if self.__isTempInRange(temp) is False:
