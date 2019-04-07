@@ -2,35 +2,39 @@ from datetime import datetime, timedelta
 from abc import ABC
 import sqlite3 as lite
 from pytz import timezone
+from App_Logging import SenseHatApp_logging
+
+log = SenseHatApp_logging()
 
 
 class DataBase(ABC):
     _localTime = datetime.now(
         timezone('Australia/Sydney')).strftime("%Y-%m-%d %H:%M:%S")
     _databaseName = 'sensehat.db'
-    #   @abstractmethod
+    # @abstractmethod
 
-    def createDatabase(self):
+    def _createDatabase(self):
         pass
-#   @abstractmethod
 
+    # @abstractmethod
     def insert(self):
-        pass
-#   @abstractmethod
-
-    def displayDB(self):
         pass
 
 
 class SensehatDB(DataBase):
+    def __init__(self):
+        self._createDatabase()
 
-    def createDatabase(self):
+    # Creating a table if it does not exist
+    def _createDatabase(self):
         connection = lite.connect(self._databaseName)
         with connection:
             point = connection.cursor()
             point.execute(
                 "CREATE TABLE IF NOT EXISTS SENSEHAT_data(timestamp DATETIME, temp NUMERIC, hum Numeric, status VARCHAR(10), temMessage VARCHAR(255),humMessage VARCHAR(255))")
+        log.logger.info("The table is created")
 
+    # #  inserting data in SENSEHAT_data table
     def insert(self, temp, hum, status, tempMessage, humMessage):
         connection = lite.connect(self._databaseName)
         with connection:
@@ -41,6 +45,7 @@ class SensehatDB(DataBase):
 
 # This code is taken from Tute sheet example
 # for week4 which is created by Mathew that for learning purposes
+# it is for return a set of data
 
     def reportDB(self):
         connection = lite.connect(self._databaseName)
@@ -66,16 +71,23 @@ class SensehatDB(DataBase):
         connection.close()
         return data
 
+#   This table is for saving date when the user notified
+
 
 class NotificationDB(DataBase):
+    def __init__(self):
+        self._createDatabase()
 
-    def createDatabase(self):
+    # Creating a table if it does not exist
+    def _createDatabase(self):
         connection = lite.connect(self._databaseName)
         with connection:
             point = connection.cursor()
             point.execute(
                 "CREATE TABLE IF NOT EXISTS Notification_data(timestamp DATETIME, status VARCHAR(10))")
+        log.logger.info("The table is created")
 
+    #  inserting data in Notification_data table
     def insert(self, status):
         connection = lite.connect(self._databaseName)
         with connection:
@@ -83,15 +95,7 @@ class NotificationDB(DataBase):
                                (self._localTime, status))
             connection.commit()
         connection.close()
-
-    def displayDB(self):
-        connection = lite.connect(self._databaseName)
-        with connection:
-            point = connection.cursor()
-            print("\nEntire database contents:\n")
-            for row in point.execute("SELECT * FROM Notification_data"):
-                print(row)
-        connection.close()
+    # Check if the user notify in a specific date
 
     def search(self):
         connection = lite.connect(self._databaseName)

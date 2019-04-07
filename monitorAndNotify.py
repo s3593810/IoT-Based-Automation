@@ -5,7 +5,7 @@ from notification import Notification
 from App_Logging import SenseHatApp_logging
 
 
-oo = SenseHatApp_logging()
+log = SenseHatApp_logging()
 # This class is working as a driver class for other classes which are needed to complete the App functionality.
 
 
@@ -26,7 +26,7 @@ class MonitorAndNotify:
                 return False
         except Exception:
             # saving any error in the app log file
-            oo.logger.error("comparing the range of temperature has an error")
+            log.logger.error("comparing the range of temperature has an error")
 # Checking the JSON file humidity range for current reading
 
     def __isHumInRange(self, hum):
@@ -37,7 +37,7 @@ class MonitorAndNotify:
                 return False
         except Exception:
             # saving any error in the app log file
-            oo.logger.error("comparing the range of humidity has an error")
+            log.logger.error("comparing the range of humidity has an error")
 #  o calculate the temperature difference between json values and current reading and return an appropriate message to be saved in the database
 
     def __tempStatusMessage(self, temp):
@@ -52,7 +52,7 @@ class MonitorAndNotify:
                 return None
         except Exception:
             # saving any error in the app log file
-            oo.logger.error("There is an error in tempStatusMessage")
+            log.logger.error("There is an error in tempStatusMessage")
 # o calculate the humidity difference between json values and current reading and return an appropriate message to be saved in the database
 
     def __humStatusMessage(self, hum):
@@ -69,7 +69,7 @@ class MonitorAndNotify:
                 return None
         except Exception:
             # saving any error in the app log file
-            oo.logger.error("There is an error in humStatusMessage")
+            log.logger.error("There is an error in humStatusMessage")
 # The starting method in the App
 
     def startApp(self):
@@ -100,7 +100,7 @@ class MonitorAndNotify:
                 self.__notifyDB.insert('OK')
         except Exception:
             # saving any error in the app log file
-            oo.logger.error("There is an error in main method")
+            log.logger.error("There is an error in main method")
 
 
 # Execute program.
