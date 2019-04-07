@@ -8,7 +8,7 @@ from App_Logging import SenseHatApp_logging
 log = SenseHatApp_logging()
 
 
-class Report:
+class CreateReport:
     db = SensehatDB()
 
     def Rep(self):
@@ -32,4 +32,4 @@ class Report:
 
 # Execute program.
 if __name__ == "__main__":
-    Report().Rep()
+    CreateReport().Rep()
