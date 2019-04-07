@@ -2,6 +2,9 @@
 import requests
 import json
 import config
+from App_Logging import SenseHatApp_logging
+oo = SenseHatApp_logging()
+# Most of this code is taken from week three tute sheet that for learning purposes
 
 
 class Notification():
@@ -18,6 +21,6 @@ class Notification():
                              headers={'Authorization': 'Bearer ' + config.ACCESS_TOKEN,
                                       'Content-Type': 'application/json'})
         if resp.status_code != 200:
-            raise Exception('Something wrong')
+            oo.logger.error('Something wrong')
         else:
-            print('complete sending')
+            oo.logger.error('Notification sending')

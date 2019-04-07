@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 # Reading Json file
+# and organise them in a property manner then easy to use them by other models
 
 
 class ReadJsonFile():
