@@ -19,6 +19,7 @@ Sense hat
 
 Authors:
 Md Shakil Khan
+
 Ali Alahamari Abdullah
 
 Monitor and Notify file is most crucial for this project.
